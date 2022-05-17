@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "thina-ia-api"
+version = "0.1.0"
+description = "Project that will serve an API for whatever application developed by THINA ia team."
+authors = ["THINA IA TEAM"]
+packages = [
+    { include = "scripts" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.10"
+fastapi = "^0.68.0"
+uvicorn = "^0.14.0"
+pandas = "^1.3.1"
+python-dotenv = "^0.19.0"
+scipy = "^1.7.1"
+scikit-learn = "^0.24.2"
+gunicorn = "20.0.4"
+pluggy = "^1.0.0"
+numpy = "1.19.5"
+tensorflow = "2.6.0"
+tensorflow-hub = "0.12.0"
+mtranslate = "^1.8"
+nltk = "3.2.5"
+psycopg2-binary = "^2.9.1"
+matplotlib = "^3.4.3"
+transformers = "^4.12.0"
+doccano-transformer = "^1.0.2"
+html2text = "^2020.1.16"
+wget = "^3.2"
+gdown = "4.4.0"
+python-multipart = "0.0.5"
+
+[tool.poe.tasks]
+cuda11 = "python -m pip install torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html"
+
+[tool.poetry.dev-dependencies]
+prospector = "^1.3.1"
+ipdb = "^0.13.9"
+jupyter = "^1.0.0"
+pytest = "^6.2.4"
+requests = "^2.26.0"
+poethepoet = "^0.12.2"
+
+[build-system]
+requires = ["poetry-core>=1.1.7"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.'MESSAGES CONTROL']
+extension-pkg-whitelist = "pydantic"
+
+[tool.poetry.scripts]
+dev = "scripts.run_app:run_development_server"
+test = "scripts.run_app:run_tests"
+prosp = "scripts.run_app:run_static_analysis"
